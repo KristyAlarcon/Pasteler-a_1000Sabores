@@ -1,11 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Pasteleria</title>
 </head>
+
 <body>
-    
+    <header>
+        <nav class="navbar">
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo center">
+                    <img class="responsive-img imagen" src="img/logo.png" alt="logo">
+                </a>
+
+
+                <ul id="nav-mobile" class="left hide-on-med-and-down lista">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="formulario">
+
+        <div>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="...." id="first_name nombre" type="text" class="validate">
+                        <label for="first_name">Nombre Completo</label>
+                    </div>
+
+                </div>
+
+                <div class="row ">
+                    <div class="input-field col s6">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="validacion.js"></script>
 </body>
+
 </html>
