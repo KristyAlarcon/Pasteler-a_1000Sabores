@@ -1,67 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pastelería Mil Sabores | 50 años endulzando Chile</title>
 
-    <title>Pasteleria</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato:wght@400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo center">
-                    <img class="responsive-img imagen" src="img/logo.png" alt="logo">
-                </a>
 
-
-                <ul id="nav-mobile" class="left hide-on-med-and-down lista">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="formulario">
-
-        <div>
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input placeholder="...." id="first_name nombre" type="text" class="validate">
-                        <label for="first_name">Nombre Completo</label>
-                    </div>
-
-                </div>
-
-                <div class="row ">
-                    <div class="input-field col s6">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-
-            </form>
-        </div>
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo"><i ><img src="img/logo.png" alt="" style="height: 60px;"></i>Mil Sabores</a>
+      <a href="#" data-target="menu-movil" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="#">Comunidad</a></li>
+        <li><a href="carrito.html"><i class="material-icons left" style="margin-right:4px">shopping_cart</i>Carrito <span id="carrito-badge">0</span></a></li>
+      </ul>
+      <ul class="right" id="nav-usuario"></ul>
     </div>
+  </nav>
 
-    <footer>
+  <ul class="sidenav" id="menu-movil">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="#">Comunidad</a></li>
+    <li><a href="carrito.html">Carrito</a></li>
+    <li><a href="login.html">Iniciar sesión</a></li>
+    <li><a href="registro.html">Regístrate</a></li>
+  </ul>
 
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="validacion.js"></script>
+
+  <header class="hero">
+    <div class="container">
+      <div class="row valign-wrapper" style="margin-bottom:0">
+        <div class="col s12 m7">
+          <span class="hero-eyebrow">50 años de tradición repostera</span>
+          <h1>Endulzamos Chile desde 1975</h1>
+          <p class="hero-sub">
+            Tortas, postres y pastelería tradicional hechos con historia y cariño.
+            Ahora puedes personalizar tu pedido, seguir tu envío y celebrar con
+            nosotros desde la comodidad de tu casa.
+          </p>
+          <div class="hero-badge-guinness">
+            <i class="material-icons">emoji_events</i>
+            Récord Guinness 1995 — colaboramos en la torta más grande del mundo
+          </div>
+          <div style="margin-top:30px">
+            <a href="catalogo.html" class="btn btn-large">Ver catálogo</a>
+            <a href="registro.html" class="btn btn-large btn-flat" style="margin-left:10px">Crear cuenta y ahorrar</a>
+          </div>
+        </div>
+        <div class="col s12 m5 center-align hide-on-small-only">
+          <i class="material-icons" style="font-size:14rem;color:var(--rosa-fuerte);opacity:.85">cake</i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="mv-card">
+            <i class="material-icons">history_edu</i>
+            <h5>Nuestra historia</h5>
+            <p class="texto-secundario">
+              Pastelería 1000 Sabores celebra su 50° aniversario como referente
+              de la repostería chilena, renovando hoy su forma de vender online.
+            </p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="mv-card">
+            <i class="material-icons">favorite</i>
+            <h5>Misión</h5>
+            <p class="texto-secundario">
+              Ofrecer una experiencia dulce y memorable, con productos de alta
+              calidad para todas las ocasiones, celebrando nuestras raíces.
+            </p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="mv-card">
+            <i class="material-icons">auto_awesome</i>
+            <h5>Visión</h5>
+            <p class="texto-secundario">
+              Ser la tienda online líder en repostería en Chile, conocida por
+              innovar y aportar a la formación de nuevos talentos gastronómicos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="alt">
+    <div class="container">
+      <h2 class="section-title">Beneficios para nuestra comunidad</h2>
+      <p class="section-kicker">Regístrate y accede automáticamente a estos beneficios.</p>
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card-panel suave center-align">
+            <i class="material-icons" style="color:var(--dorado);font-size:2.4rem">redeem</i>
+            <h5>50% de descuento</h5>
+            <p class="texto-secundario">Para todas las personas mayores de 50 años, en todos los productos, todos los días.</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card-panel suave center-align">
+            <i class="material-icons" style="color:var(--dorado);font-size:2.4rem">local_offer</i>
+            <h5>10% de por vida</h5>
+            <p class="texto-secundario">Regístrate con el código <strong>FELICES50</strong> y obtén 10% de descuento permanente.</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card-panel suave center-align">
+            <i class="material-icons" style="color:var(--dorado);font-size:2.4rem">school</i>
+            <h5>Torta gratis Duoc</h5>
+            <p class="texto-secundario">Estudiantes Duoc UC reciben una torta gratis el día de su cumpleaños, con correo institucional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Explora nuestras categorías</h2>
+      <p class="section-kicker">Desde tortas especiales hasta opciones sin azúcar, sin gluten y veganas.</p>
+      <div class="row" id="grid-categorias"></div>
+      <div class="center-align">
+        <a href="catalogo.html" class="btn btn-large">Ver todo el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="container">
+      <div class="row valign-wrapper">
+        <div class="col s12 m7">
+          <h2 class="section-title">Impacto comunitario</h2>
+          <p class="texto-secundario">
+            Cada compra apoya la formación de nuevos talentos en gastronomía:
+            trabajamos junto a estudiantes de Duoc UC para mantener viva la
+            tradición repostera chilena y abrir oportunidades reales en el rubro.
+          </p>
+          <a href="blog.html" class="btn btn-rosa">Conoce nuestra comunidad</a>
+        </div>
+        <div class="col s12 m5 center-align hide-on-small-only">
+          <i class="material-icons" style="font-size:9rem;color:var(--chocolate);opacity:.8">volunteer_activism</i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m4">
+          <h5>Mil Sabores</h5>
+          <p style="color:#f0d9c9">50 años de tradición repostera chilena, ahora online.</p>
+        </div>
+        <div class="col s12 m4">
+          <h5>Navegación</h5>
+          <ul>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="registro.html">Crear cuenta</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+          </ul>
+        </div>
+        <div class="col s12 m4">
+          <h5>Contacto</h5>
+          <p style="color:#f0d9c9">Santiago, Chile · hola@milsabores.cl</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © <span class="anio-actual"></span> Pastelería Mil Sabores — Proyecto académico Duoc UC
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+
 </body>
-
 </html>

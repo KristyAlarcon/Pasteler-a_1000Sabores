@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito | Pastelería Mil Sabores</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato:wght@400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo"><i class="material-icons">cake</i>Mil Sabores</a>
+      <a href="#" data-target="menu-movil" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="#">Comunidad</a></li>
+        <li><a href="carrito.html" class="active"><i class="material-icons left" style="margin-right:4px">shopping_cart</i>Carrito <span id="carrito-badge">0</span></a></li>
+      </ul>
+      <ul class="right" id="nav-usuario"></ul>
+    </div>
+  </nav>
+  <ul class="sidenav" id="menu-movil">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+  </ul>
+
+
+  <section id="vista-carrito">
+    <div class="container">
+      <h1 style="font-size:2.4rem">Tu carrito</h1>
+
+      <div id="carrito-vacio" class="empty-state" style="display:none">
+        <i class="material-icons">shopping_cart</i>
+        <p>Tu carrito está vacío por ahora.</p>
+        <a href="catalogo.html" class="btn">Ir al catálogo</a>
+      </div>
+
+      <div class="row" id="carrito-con-items" style="display:none">
+        <div class="col s12 m7">
+          <div id="lista-items"></div>
+        </div>
+
+        <div class="col s12 m5">
+          <div class="resumen-carrito">
+            <h5 style="margin-top:0">Resumen del pedido</h5>
+            <div class="resumen-linea"><span>Subtotal</span><span id="resumen-subtotal">$0</span></div>
+            <div class="resumen-linea descuento" id="fila-descuento" style="display:none">
+              <span id="texto-descuento">Descuento</span><span id="resumen-descuento">-$0</span>
+            </div>
+            <div class="resumen-linea"><span>Envío</span><span id="resumen-envio">$3.000</span></div>
+            <div class="resumen-linea total"><span>Total</span><span id="resumen-total">$0</span></div>
+
+            <div id="aviso-sin-sesion" class="aviso-descuento bg-10 activo" style="margin-top:18px">
+              <i class="material-icons">info</i>
+              <span><a href="login.html">Inicia sesión</a> para aplicar tus descuentos automáticamente.</span>
+            </div>
+
+            <a href="#" id="btn-ir-checkout" class="btn btn-large waves-effect waves-light" style="width:100%;margin-top:16px">
+              Continuar con el pedido
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="bloque-checkout" style="display:none;margin-top:40px">
+        <div class="row">
+          <div class="col s12 m7">
+            <form id="form-checkout" class="card-panel" novalidate>
+              <h5 style="margin-top:0">Datos de entrega</h5>
+              <div class="input-field">
+                <input id="c-direccion" type="text" />
+                <label for="c-direccion" class="active">Dirección de despacho</label>
+                <div class="mensaje-error"></div>
+              </div>
+              <div class="row" style="margin-bottom:0">
+                <div class="input-field col s12 m6">
+                  <input id="c-fecha" type="date" />
+                  <label for="c-fecha" class="active">Fecha de entrega preferida</label>
+                  <div class="mensaje-error"></div>
+                </div>
+                <div class="input-field col s12 m6">
+                  <select id="c-pago">
+                    <option value="debito">Tarjeta de débito</option>
+                    <option value="credito">Tarjeta de crédito</option>
+                    <option value="transferencia">Transferencia bancaria</option>
+                  </select>
+                  <label>Método de pago</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-large waves-effect waves-light" style="width:100%">
+                Confirmar pedido
+              </button>
+            </form>
+          </div>
+          <div class="col s12 m5">
+            <div class="card-panel suave">
+              <h6 style="font-weight:700">Antes de confirmar</h6>
+              <p class="texto-secundario">Recibirás una boleta y podrás seguir el estado de tu pedido desde la
+                preparación hasta la entrega.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="vista-confirmacion" style="display:none">
+    <div class="container">
+      <div class="center-align" style="margin-bottom:20px">
+        <i class="material-icons" style="font-size:4rem;color:#4c8c4a">check_circle</i>
+        <h1 style="font-size:2.2rem">¡Pedido confirmado!</h1>
+        <p class="texto-secundario">Guarda tu número de pedido para hacer seguimiento.</p>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card-panel">
+            <h5 style="margin-top:0">Boleta #<span id="boleta-id"></span></h5>
+            <p class="texto-secundario" id="boleta-fecha"></p>
+            <div id="boleta-items"></div>
+            <div class="divider-suave"></div>
+            <div class="resumen-linea"><span>Subtotal</span><span id="boleta-subtotal">$0</span></div>
+            <div class="resumen-linea descuento" id="boleta-fila-descuento" style="display:none">
+              <span>Descuento</span><span id="boleta-descuento">-$0</span>
+            </div>
+            <div class="resumen-linea"><span>Envío</span><span id="boleta-envio">$0</span></div>
+            <div class="resumen-linea total"><span>Total pagado</span><span id="boleta-total">$0</span></div>
+          </div>
+        </div>
+        <div class="col s12 m5">
+          <div class="card-panel suave">
+            <h6 style="font-weight:700">Seguimiento del pedido</h6>
+            <div class="pasos-seguimiento">
+              <div class="paso-seguimiento completo"><div class="punto"><i class="material-icons tiny">check</i></div><span>Confirmado</span></div>
+              <div class="paso-seguimiento completo"><div class="punto"><i class="material-icons tiny">check</i></div><span>Preparación</span></div>
+              <div class="paso-seguimiento"><div class="punto">3</div><span>En camino</span></div>
+              <div class="paso-seguimiento"><div class="punto">4</div><span>Entregado</span></div>
+            </div>
+            <p class="texto-secundario" style="margin-top:20px">
+              Entrega estimada: <strong id="boleta-fecha-entrega"></strong><br/>
+              Dirección: <span id="boleta-direccion"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="center-align" style="margin-top:20px">
+        <a href="catalogo.html" class="btn btn-large">Seguir comprando</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">© <span class="anio-actual"></span> Pastelería Mil Sabores</div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/carrito.js"></script>
+</body>
+</html>

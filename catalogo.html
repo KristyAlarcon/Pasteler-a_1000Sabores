@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo | Pastelería Mil Sabores</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato:wght@400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo"><i class="material-icons">cake</i>Mil Sabores</a>
+      <a href="#" data-target="menu-movil" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html" class="active">Catálogo</a></li>
+        <li><a href="#">Comunidad</a></li>
+        <li><a href="carrito.html"><i class="material-icons left" style="margin-right:4px">shopping_cart</i>Carrito <span id="carrito-badge">0</span></a></li>
+      </ul>
+      <ul class="right" id="nav-usuario"></ul>
+    </div>
+  </nav>
+  <ul class="sidenav" id="menu-movil">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="carrito.html">Carrito</a></li>
+  </ul>
+
+  <section style="padding-bottom:20px">
+    <div class="container">
+      <h1 style="font-size:2.4rem">Catálogo de productos</h1>
+      <p class="texto-secundario">Filtra por categoría, forma o tamaño.</p>
+
+      <div class="filtros-panel">
+        <div class="row" style="margin-bottom:0">
+          <div class="input-field col s12 m4">
+            <select id="filtro-categoria">
+              <option value="">Todas las categorías</option>
+            </select>
+            <label>Categoría</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <select id="filtro-tipo">
+              <option value="">Cualquier forma</option>
+              <option value="cuadrada">Cuadrada</option>
+              <option value="circular">Circular</option>
+              <option value="individual">Individual</option>
+            </select>
+            <label>Tipo de torta</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <select id="filtro-orden">
+              <option value="relevancia">Relevancia</option>
+              <option value="menor-precio">Menor precio</option>
+              <option value="mayor-precio">Mayor precio</option>
+            </select>
+            <label>Ordenar por</label>
+          </div>
+        </div>
+      </div>
+
+      <p id="contador-resultados" class="texto-secundario"></p>
+
+      <div class="row" id="grid-productos"></div>
+      <div class="empty-state" id="estado-vacio" style="display:none">
+        <i class="material-icons">search_off</i>
+        <p>No encontramos productos con esos filtros.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <div id="modal-producto" class="modal">
+    <div class="modal-content">
+      <h5 id="modal-nombre">Producto</h5>
+      <p class="texto-secundario" id="modal-descripcion"></p>
+      <p class="producto-precio" id="modal-precio"></p>
+
+      <div class="row" id="modal-tamano-wrapper" style="margin-bottom:0">
+        <div class="input-field col s12">
+          <select id="modal-tamano">
+            <option value="pequeña">Pequeña (hasta 10 personas)</option>
+            <option value="mediana" selected>Mediana (hasta 20 personas)</option>
+            <option value="grande">Grande (hasta 35 personas)</option>
+          </select>
+          <label>Tamaño</label>
+        </div>
+      </div>
+
+      <div class="input-field" id="modal-mensaje-wrapper" style="margin-bottom:30px">
+        <textarea id="modal-mensaje" class="materialize-textarea" maxlength="60"></textarea>
+        <label for="modal-mensaje">Mensaje especial para la torta (opcional)</label>
+        <span class="helper-text">Máximo 60 caracteres.</span>
+        <div class="mensaje-error"></div>
+      </div>
+
+      <div class="bloque-cantidad">
+        <label>Cantidad</label>
+        <div class="cantidad-control">
+          <button type="button" id="modal-menos">−</button>
+          <span id="modal-cantidad">1</span>
+          <button type="button" id="modal-mas">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="btn-flat modal-close">Cancelar</a>
+      <a href="#!" class="btn" id="modal-agregar">Agregar al carrito</a>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">© <span class="anio-actual"></span> Pastelería Mil Sabores</div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/catalogo.js"></script>
+</body>
+</html>
