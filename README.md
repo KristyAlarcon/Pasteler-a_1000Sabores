@@ -1,3 +1,16 @@
-# Pasteleria_1000Sabores
+# React + Vite
 
-Es nuestro E-commerce el cual nos agrada hablar de este proyecto, ya que es el primero tan grande, el cual le hemos dedicado tiempo y esfuezo para que todo salga como corresponde y bien, este es un proyecto el cual tenemos un mockup funcional de una pagina web para una pasteleria, dicha pasteleria ofrece cantidades de recetas culinarias de postres y tortas, generando asi una cantidad de fans desde el princio
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
