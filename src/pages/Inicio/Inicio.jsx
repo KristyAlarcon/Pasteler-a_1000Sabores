@@ -11,8 +11,8 @@ function Inicio(){
 
             <header className={styles.hero}>
                 <div className="container">
-                    <div className={"row valign-wrapper " + styles.filaHero}>
-                        <div className="col s12 m7">
+                    <div className={"row align-items-center " + styles.filaHero}>
+                        <div className="col-12 col-md-7">
                             <span className={styles.heroEyebrow}>50 años de tradición repostera</span>
                             <h1>Endulzamos Chile desde 1975</h1>
                             <p className={styles.heroSub}>
@@ -25,11 +25,11 @@ function Inicio(){
                                 Récord Guinness 1995 — colaboramos en la torta más grande del mundo
                             </div>
                             <div className={styles.botonesHero}>
-                                <Link to="/Catalogo" className="btn btn-large">Ver catálogo</Link>{" "}
-                                <Link to="/Registro" className={"btn btn-large btn-flat " + styles.botonSecundario}>Crear cuenta y ahorrar</Link>
+                                <Link to="/Catalogo" className="btn btn-lg btn-primary">Ver catálogo</Link>{" "}
+                                <Link to="/Registro" className={"btn btn-lg btn-outline-primary " + styles.botonSecundario}>Crear cuenta y ahorrar</Link>
                             </div>
                         </div>
-                        <div className="col s12 m5 center-align hide-on-small-only">
+                        <div className="col-12 col-md-5 text-center d-none d-md-block">
                             <i className={"material-icons " + styles.iconoHero}>cake</i>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ function Inicio(){
             <section>
                 <div className="container">
                     <div className="row">
-                        <div className="col s12 m4">
+                        <div className="col-12 col-md-4">
                             <div className={styles.mvCard}>
                                 <i className="material-icons">history_edu</i>
                                 <h5>Nuestra historia</h5>
@@ -50,7 +50,7 @@ function Inicio(){
                                 </p>
                             </div>
                         </div>
-                        <div className="col s12 m4">
+                        <div className="col-12 col-md-4">
                             <div className={styles.mvCard}>
                                 <i className="material-icons">favorite</i>
                                 <h5>Misión</h5>
@@ -60,7 +60,7 @@ function Inicio(){
                                 </p>
                             </div>
                         </div>
-                        <div className="col s12 m4">
+                        <div className="col-12 col-md-4">
                             <div className={styles.mvCard}>
                                 <i className="material-icons">auto_awesome</i>
                                 <h5>Visión</h5>
@@ -80,22 +80,22 @@ function Inicio(){
                     <h2 className="section-title">Beneficios para nuestra comunidad</h2>
                     <p className="section-kicker">Regístrate y accede automáticamente a estos beneficios.</p>
                     <div className="row">
-                        <div className="col s12 m4">
-                            <div className="card-panel suave center-align">
+                        <div className="col-12 col-md-4">
+                            <div className="card card-body suave text-center">
                                 <i className={"material-icons " + styles.iconoBeneficio}>redeem</i>
                                 <h5>50% de descuento</h5>
                                 <p className="texto-secundario">Para todas las personas mayores de 50 años, en todos los productos, todos los días.</p>
                             </div>
                         </div>
-                        <div className="col s12 m4">
-                            <div className="card-panel suave center-align">
+                        <div className="col-12 col-md-4">
+                            <div className="card card-body suave text-center">
                                 <i className={"material-icons " + styles.iconoBeneficio}>local_offer</i>
                                 <h5>10% de por vida</h5>
                                 <p className="texto-secundario">Regístrate con el código <strong>FELICES50</strong> y obtén 10% de descuento permanente.</p>
                             </div>
                         </div>
-                        <div className="col s12 m4">
-                            <div className="card-panel suave center-align">
+                        <div className="col-12 col-md-4">
+                            <div className="card card-body suave text-center">
                                 <i className={"material-icons " + styles.iconoBeneficio}>school</i>
                                 <h5>Torta gratis Duoc</h5>
                                 <p className="texto-secundario">Estudiantes Duoc UC reciben una torta gratis el día de su cumpleaños, con correo institucional.</p>
@@ -111,16 +111,16 @@ function Inicio(){
                     <h2 className="section-title">Explora nuestras categorías</h2>
                     <p className="section-kicker">Desde tortas especiales hasta opciones sin azúcar, sin gluten y veganas.</p>
                     <div className="row" id="grid-categorias"></div>
-                    <div className="center-align">
-                        <Link to="/Catalogo" className="btn btn-large">Ver todo el catálogo</Link>
+                    <div className="text-center">
+                        <Link to="/Catalogo" className="btn btn-lg btn-primary">Ver todo el catálogo</Link>
                     </div>
                 </div>
             </section>
 
             <section className="alt">
                 <div className="container">
-                    <div className="row valign-wrapper">
-                        <div className="col s12 m7">
+                    <div className="row align-items-center">
+                        <div className="col-12 col-md-7">
                             <h2 className="section-title">Impacto comunitario</h2>
                             <p className="texto-secundario">
                                 Cada compra apoya la formación de nuevos talentos en gastronomía:
@@ -129,7 +129,7 @@ function Inicio(){
                             </p>
                             <a href="#" className="btn btn-rosa">Conoce nuestra comunidad</a>
                         </div>
-                        <div className="col s12 m5 center-align hide-on-small-only">
+                        <div className="col-12 col-md-5 text-center d-none d-md-block">
                             <i className={"material-icons " + styles.iconoComunidad}>volunteer_activism</i>
                         </div>
                     </div>

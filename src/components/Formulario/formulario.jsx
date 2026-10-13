@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import App_alert from "../../alert/alert";
 import styles from "./formulario.module.css";
 
 function Formulario({ campos, titulo, textoBoton, className, onGuardar, onCambio, children, pie }){
-    // Valores de todos los campos: { idCampo: valor }
+
     const [valores, setValores] = useState(() => {
         const iniciales = {};
         campos.forEach((campo) => {
@@ -34,53 +35,48 @@ function Formulario({ campos, titulo, textoBoton, className, onGuardar, onCambio
     function guardar(evento){
         evento.preventDefault();
         setMostrarAlerta(false);
-        // La página valida los valores y usa alerta() para mostrar el mensaje
+   
         onGuardar(valores, alerta);
     }
 
     return(
-        <form className={className} noValidate onSubmit={guardar}>
+        <Form className={className} noValidate onSubmit={guardar}>
             {titulo && <h5 className={styles.titulo}>{titulo}</h5>}
 
-            <div className={"row " + styles.fila}>
+            <div className="row">
                 {campos.map((campo) => {
                     if (campo.type === "checkbox") {
                         return (
-                            <p className="col s12" key={campo.id}>
-                                <label>
-                                    <input type="checkbox" className="filled-in" id={campo.id}
-                                        checked={valores[campo.id]}
-                                        onChange={(e) => cambiar(campo.id, e.target.checked)} />
-                                    <span>{campo.label}</span>
-                                </label>
-                            </p>
+                            <Form.Group className="col-12 mb-3" key={campo.id}>
+                                <Form.Check type="checkbox" id={campo.id} label={campo.label}
+                                    checked={valores[campo.id]}
+                                    onChange={(e) => cambiar(campo.id, e.target.checked)} />
+                            </Form.Group>
                         );
                     }
 
                     if (campo.type === "select") {
                         return (
-                            <div className={"input-field " + (campo.col || "col s12")} key={campo.id}>
-                                <select className="browser-default" id={campo.id}
-                                    value={valores[campo.id]}
-                                    onChange={(e) => cambiar(campo.id, e.target.value)}>
+                            <Form.Group className={(campo.col || "col-12") + " mb-3"} controlId={campo.id} key={campo.id}>
+                                <Form.Label>{campo.label}</Form.Label>
+                                <Form.Select value={valores[campo.id]} onChange={(e) => cambiar(campo.id, e.target.value)}>
                                     {campo.opciones.map((opcion) => (
                                         <option key={opcion.valor} value={opcion.valor}>{opcion.texto}</option>
                                     ))}
-                                </select>
-                                <label htmlFor={campo.id} className="active">{campo.label}</label>
-                            </div>
+                                </Form.Select>
+                            </Form.Group>
                         );
                     }
 
                     return (
-                        <div className={"input-field " + (campo.col || "col s12")} key={campo.id}>
-                            <input id={campo.id} type={campo.type || "text"}
+                        <Form.Group className={(campo.col || "col-12") + " mb-3"} controlId={campo.id} key={campo.id}>
+                            <Form.Label>{campo.label}</Form.Label>
+                            <Form.Control type={campo.type || "text"}
                                 placeholder={campo.placeholder}
                                 value={valores[campo.id]}
                                 onChange={(e) => cambiar(campo.id, e.target.value)} />
-                            <label htmlFor={campo.id} className={campo.type === "date" || campo.placeholder ? "active" : ""}>{campo.label}</label>
-                            {campo.ayuda && <span className="helper-text">{campo.ayuda}</span>}
-                        </div>
+                            {campo.ayuda && <Form.Text className="texto-secundario">{campo.ayuda}</Form.Text>}
+                        </Form.Group>
                     );
                 })}
             </div>
@@ -94,12 +90,12 @@ function Formulario({ campos, titulo, textoBoton, className, onGuardar, onCambio
                 msgAlert={mostrarMensaje}
             />
 
-            <button type="submit" className={"btn btn-large waves-effect waves-light " + styles.boton}>
+            <Button type="submit" size="lg" className={styles.boton}>
                 {textoBoton}
-            </button>
+            </Button>
 
             {pie}
-        </form>
+        </Form>
     );
 
 }

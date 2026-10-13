@@ -9,9 +9,9 @@ const COSTO_ENVIO = 3000;
 
 const camposCheckout = [
     { id: "direccion", label: "Dirección de despacho" },
-    { id: "fecha", label: "Fecha de entrega preferida", col: "col s12 m6", type: "date" },
+    { id: "fecha", label: "Fecha de entrega preferida", col: "col-12 col-md-6", type: "date" },
     {
-        id: "pago", label: "Método de pago", col: "col s12 m6", type: "select",
+        id: "pago", label: "Método de pago", col: "col-12 col-md-6", type: "select",
         opciones: [
             { valor: "debito", texto: "Tarjeta de débito" },
             { valor: "credito", texto: "Tarjeta de crédito" },
@@ -28,11 +28,10 @@ function Carrito(){
     const sesion = JSON.parse(localStorage.getItem("sesion"));
     const [carrito, setCarrito] = useState(JSON.parse(localStorage.getItem("carrito")) || []);
 
-    // Checkout
+
     const checkoutRef = useRef(null);
     const [mostrarCheckout, setMostrarCheckout] = useState(false);
 
-    // Boleta generada al confirmar el pedido
     const [boleta, setBoleta] = useState(null);
 
     useEffect(() => {
@@ -107,8 +106,7 @@ function Carrito(){
         }
 
         setBoleta({
-            // Se ejecuta al confirmar el pedido, no durante el render
-            // eslint-disable-next-line react-hooks/purity
+
             numeroPedido: Math.floor(Math.random() * 900000) + 100000,
             fecha: new Date().toLocaleDateString("es-CL"),
             fechaEntrega: new Date(valores.fecha).toLocaleDateString("es-CL"),
@@ -138,13 +136,13 @@ function Carrito(){
                             <div id="carrito-vacio" className="empty-state">
                                 <i className="material-icons">shopping_cart</i>
                                 <p>Tu carrito está vacío por ahora.</p>
-                                <Link to="/Catalogo" className="btn">Ir al catálogo</Link>
+                                <Link to="/Catalogo" className="btn btn-primary">Ir al catálogo</Link>
                             </div>
                         )}
 
                         {carrito.length > 0 && (
                             <div className={"row " + styles.conItems} id="carrito-con-items">
-                                <div className="col s12 m7">
+                                <div className="col-12 col-md-7">
                                     <div id="lista-items">
                                         {carrito.map((item, indice) => (
                                             <div className={styles.filaCarrito} key={indice}>
@@ -167,7 +165,7 @@ function Carrito(){
                                     </div>
                                 </div>
 
-                                <div className="col s12 m5">
+                                <div className="col-12 col-md-5">
                                     <div className={styles.resumenCarrito}>
                                         <h5 className={styles.sinMargenArriba}>Resumen del pedido</h5>
                                         <div className={styles.resumenLinea}><span>Subtotal</span><span id="resumen-subtotal">${formatearPrecio(subtotal)}</span></div>
@@ -186,7 +184,7 @@ function Carrito(){
                                             </div>
                                         )}
 
-                                        <a href="#" id="btn-ir-checkout" className={"btn btn-large waves-effect waves-light " + styles.botonCheckout} onClick={irACheckout}>
+                                        <a href="#" id="btn-ir-checkout" className={"btn btn-lg btn-primary " + styles.botonCheckout} onClick={irACheckout}>
                                             Continuar con el pedido
                                         </a>
                                     </div>
@@ -198,17 +196,17 @@ function Carrito(){
                         {mostrarCheckout && carrito.length > 0 && (
                             <div id="bloque-checkout" ref={checkoutRef} className={styles.bloqueCheckout}>
                                 <div className="row">
-                                    <div className="col s12 m7">
+                                    <div className="col-12 col-md-7">
                                         <Formulario
-                                            className="card-panel"
+                                            className="card card-body"
                                             titulo="Datos de entrega"
                                             campos={camposCheckout}
                                             textoBoton="Confirmar pedido"
                                             onGuardar={generarBoleta}
                                         />
                                     </div>
-                                    <div className="col s12 m5">
-                                        <div className="card-panel suave">
+                                    <div className="col-12 col-md-5">
+                                        <div className="card card-body suave">
                                             <h6 className={styles.subtitulo}>Antes de confirmar</h6>
                                             <p className="texto-secundario">Recibirás una boleta y podrás seguir el estado de tu pedido desde la
                                                 preparación hasta la entrega.</p>
@@ -225,15 +223,15 @@ function Carrito(){
             {boleta && (
                 <section id="vista-confirmacion">
                     <div className="container">
-                        <div className={"center-align " + styles.encabezadoConfirmacion}>
+                        <div className={"text-center " + styles.encabezadoConfirmacion}>
                             <i className={"material-icons " + styles.iconoConfirmado}>check_circle</i>
                             <h1 className={styles.tituloConfirmacion}>¡Pedido confirmado!</h1>
                             <p className="texto-secundario">Guarda tu número de pedido para hacer seguimiento.</p>
                         </div>
 
                         <div className="row">
-                            <div className="col s12 m7">
-                                <div className="card-panel">
+                            <div className="col-12 col-md-7">
+                                <div className="card card-body">
                                     <h5 className={styles.sinMargenArriba}>Boleta #<span id="boleta-id">{boleta.numeroPedido}</span></h5>
                                     <p className="texto-secundario" id="boleta-fecha">Emitida el {boleta.fecha}</p>
                                     <div id="boleta-items">
@@ -255,8 +253,8 @@ function Carrito(){
                                     <div className={styles.resumenLinea + " " + styles.total}><span>Total pagado</span><span id="boleta-total">${formatearPrecio(boleta.total)}</span></div>
                                 </div>
                             </div>
-                            <div className="col s12 m5">
-                                <div className="card-panel suave">
+                            <div className="col-12 col-md-5">
+                                <div className="card card-body suave">
                                     <h6 className={styles.subtitulo}>Seguimiento del pedido</h6>
                                     <div className={styles.pasosSeguimiento}>
                                         <div className={styles.pasoSeguimiento + " " + styles.completo}><div className={styles.punto}><i className="material-icons tiny">check</i></div><span>Confirmado</span></div>
@@ -272,8 +270,8 @@ function Carrito(){
                             </div>
                         </div>
 
-                        <div className={"center-align " + styles.margenArriba}>
-                            <Link to="/Catalogo" className="btn btn-large">Seguir comprando</Link>
+                        <div className={"text-center " + styles.margenArriba}>
+                            <Link to="/Catalogo" className="btn btn-lg btn-primary">Seguir comprando</Link>
                         </div>
                     </div>
                 </section>

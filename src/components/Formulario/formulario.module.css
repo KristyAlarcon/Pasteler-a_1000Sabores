@@ -1,9 +1,6 @@
 .titulo {
   margin-top: 0;
-}
-
-.fila {
-  margin-bottom: 0;
+  margin-bottom: 16px;
 }
 
 .boton {

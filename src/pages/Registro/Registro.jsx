@@ -6,13 +6,13 @@ import Formulario from "../../components/Formulario/formulario";
 import styles from "./registro.module.css";
 
 const camposRegistro = [
-    { id: "nombre", label: "Nombre", col: "col s12 m6" },
-    { id: "apellido", label: "Apellido", col: "col s12 m6" },
-    { id: "run", label: "RUN", col: "col s12 m6", placeholder: "12.345.678-9" },
-    { id: "fechaNacimiento", label: "Fecha de nacimiento", col: "col s12 m6", type: "date" },
+    { id: "nombre", label: "Nombre", col: "col-12 col-md-6" },
+    { id: "apellido", label: "Apellido", col: "col-12 col-md-6" },
+    { id: "run", label: "RUN", col: "col-12 col-md-6", placeholder: "12.345.678-9" },
+    { id: "fechaNacimiento", label: "Fecha de nacimiento", col: "col-12 col-md-6", type: "date" },
     { id: "email", label: "Correo electrónico", type: "email", ayuda: "Si tienes correo institucional @duocuc.cl, recibirás una torta gratis en tu cumpleaños." },
-    { id: "password", label: "Contraseña", col: "col s12 m6", type: "password", ayuda: "Entre 4 y 10 caracteres." },
-    { id: "password2", label: "Confirmar contraseña", col: "col s12 m6", type: "password" },
+    { id: "password", label: "Contraseña", col: "col-12 col-md-6", type: "password", ayuda: "Entre 4 y 10 caracteres." },
+    { id: "password2", label: "Confirmar contraseña", col: "col-12 col-md-6", type: "password" },
     { id: "codigo", label: "Código promocional (opcional)", placeholder: "Ej: FELICES50", ayuda: "El código FELICES50 te da 10% de descuento de por vida." },
     { id: "terminos", label: "Acepto los términos y condiciones", type: "checkbox" }
 ];
@@ -61,7 +61,6 @@ function calcularBeneficios(datos){
 function Registro(){
     const navigate = useNavigate();
 
-    // Valores del formulario, usados para mostrar los avisos de beneficios
     const [datos, setDatos] = useState({});
     const beneficios = calcularBeneficios(datos);
     const mostrarAvisoTorta = beneficios.esEstudianteDuoc && Boolean(datos.fechaNacimiento);
@@ -164,7 +163,7 @@ function Registro(){
 
             <section>
                 <div className="container">
-                    <div className={"center-align " + styles.encabezado}>
+                    <div className={"text-center " + styles.encabezado}>
                         <h1 className={styles.titulo}>Crea tu cuenta</h1>
                         <p className="texto-secundario">Regístrate y descubre al instante los beneficios que te corresponden.</p>
                     </div>
@@ -176,7 +175,7 @@ function Registro(){
                         onGuardar={registrarUsuario}
                         onCambio={setDatos}
                         pie={
-                            <p className={"center-align " + styles.pie}>
+                            <p className={"text-center " + styles.pie}>
                                 ¿Ya tienes cuenta? <Link to="/Login">Inicia sesión</Link>
                             </p>
                         }
