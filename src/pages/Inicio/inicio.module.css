@@ -1,0 +1,90 @@
+.hero {
+  background: linear-gradient(135deg, #fff5e1 0%, #ffc0cb 140%);
+  padding: 70px 0 60px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #f0ddc4;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 6px;
+}
+
+.filaHero {
+  margin-bottom: 0;
+}
+
+.heroEyebrow {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  color: #8b4513;
+  letter-spacing: 0.5px;
+}
+
+.heroSub {
+  font-size: 1.15rem;
+  color: #5d4037;
+  max-width: 520px;
+}
+
+.heroBadgeGuinness {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #f0ddc4;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #8b4513;
+  margin-top: 18px;
+}
+
+.heroBadgeGuinness i {
+  color: #d9a441;
+}
+
+.botonesHero {
+  margin-top: 30px;
+}
+
+.botonSecundario {
+  margin-left: 10px;
+}
+
+i.iconoHero {
+  font-size: 14rem;
+  color: var(--rosa-fuerte);
+  opacity: 0.85;
+}
+
+.mvCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid #f0ddc4;
+  height: 100%;
+}
+
+.mvCard i {
+  font-size: 2.4rem;
+  color: #f4a6b6;
+  margin-bottom: 12px;
+}
+
+i.iconoBeneficio {
+  color: var(--dorado);
+  font-size: 2.4rem;
+}
+
+i.iconoComunidad {
+  font-size: 9rem;
+  color: var(--chocolate);
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.2rem; }
+}

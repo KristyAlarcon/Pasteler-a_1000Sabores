@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App"
 
 import Carrito from "./pages/Carrito/Carrito"
 import Catalogo from "./pages/Catalogo/Catalogo"
+import Inicio from "./pages/Inicio/Inicio"
 import Login from "./pages/Login/Login"
 import Registro from "./pages/Registro/Registro"
 
 export const routes = createBrowserRouter([
     {
         path:'/',
-        element:<App/>
+        element:<Inicio/>
     },
     {
         path:'/Carrito',

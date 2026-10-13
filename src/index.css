@@ -90,21 +90,6 @@ nav ul a.btn-nav-cta {
   font-weight: 600;
 }
 
-#carrito-badge {
-  background: #d9a441;
-  color: #fff;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 0.72rem;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: -10px;
-  left: -6px;
-}
-
 
 .btn, .btn-large, .btn-small {
   background-color: #8b4513;
@@ -136,51 +121,6 @@ nav ul a.btn-nav-cta {
 .btn-flat:hover {
   color: #5d4037;
   background-color: transparent;
-}
-
-
-.hero {
-  background: linear-gradient(135deg, #fff5e1 0%, #ffc0cb 140%);
-  padding: 70px 0 60px;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid #f0ddc4;
-}
-
-.hero .hero-eyebrow {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  color: #8b4513;
-  letter-spacing: 0.5px;
-}
-
-.hero h1 {
-  font-size: 3.2rem;
-  margin-bottom: 6px;
-}
-
-.hero p.hero-sub {
-  font-size: 1.15rem;
-  color: #5d4037;
-  max-width: 520px;
-}
-
-.hero-badge-guinness {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  border: 1px solid #f0ddc4;
-  border-radius: 30px;
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #8b4513;
-  margin-top: 18px;
-}
-
-.hero-badge-guinness i {
-  color: #d9a441;
 }
 
 
@@ -220,95 +160,6 @@ section.alt {
   border-radius: 14px;
 }
 
-.mv-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 32px 28px;
-  border: 1px solid #f0ddc4;
-  height: 100%;
-}
-
-.mv-card i.material-icons {
-  font-size: 2.4rem;
-  color: #f4a6b6;
-  margin-bottom: 12px;
-}
-
-#grid-productos {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#grid-productos > .col {
-  display: flex;
-  margin-bottom: 24px;
-}
-
-.producto-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.producto-media {
-  height: 150px;
-  border-radius: 14px 14px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #ffc0cb 0%, #fff5e1 100%);
-}
-
-.producto-media i {
-  font-size: 3.4rem;
-  color: #8b4513;
-  opacity: 0.75;
-}
-
-.producto-card .card-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.producto-nombre {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: #5d4037;
-  margin: 0 0 4px;
-}
-
-.producto-desc {
-  color: #8d7a72;
-  font-size: 0.9rem;
-  flex-grow: 1;
-}
-
-.producto-precio {
-  font-weight: 700;
-  color: #8b4513;
-  font-size: 1.15rem;
-  margin: 10px 0;
-}
-
-.chip-categoria {
-  background: #fff5e1;
-  border: 1px solid #f0ddc4;
-  color: #8b4513;
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-
-.filtros-panel {
-  background: #fff;
-  border: 1px solid #f0ddc4;
-  border-radius: 14px;
-  padding: 22px 24px 6px;
-  margin-bottom: 30px;
-}
 
 .form-card {
   max-width: 640px;
@@ -385,42 +236,6 @@ section.alt {
 .aviso-descuento.bg-torta { background: #eef7ee; }
 
 
-.fila-carrito {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 0;
-  border-bottom: 1px solid #f0ddc4;
-}
-
-.fila-carrito .icono-mini {
-  width: 56px;
-  height: 56px;
-  border-radius: 10px;
-  background: #fff5e1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.fila-carrito .icono-mini i {
-  color: #8b4513;
-}
-
-.bloque-cantidad {
-  margin-top: 10px;
-  padding-top: 20px;
-  border-top: 1px solid #f0ddc4;
-}
-
-.bloque-cantidad label {
-  display: block;
-  margin-bottom: 10px;
-  color: #5d4037;
-  font-size: 0.9rem;
-}
-
 .cantidad-control {
   display: flex;
   align-items: center;
@@ -444,81 +259,6 @@ section.alt {
   width: 30px;
   text-align: center;
   font-weight: 700;
-}
-
-.resumen-carrito {
-  background: #fff;
-  border: 1px solid #f0ddc4;
-  border-radius: 14px;
-  padding: 26px;
-  position: sticky;
-  top: 90px;
-}
-
-.resumen-linea {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-}
-
-.resumen-linea.total {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #8b4513;
-  border-top: 1px solid #f0ddc4;
-  padding-top: 12px;
-  margin-top: 4px;
-}
-
-.resumen-linea.descuento {
-  color: #4c8c4a;
-}
-
-
-.pasos-seguimiento {
-  display: flex;
-  justify-content: space-between;
-  margin: 26px 0 10px;
-}
-
-.paso-seguimiento {
-  flex: 1;
-  text-align: center;
-  position: relative;
-}
-
-.paso-seguimiento .punto {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #f0ddc4;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 8px;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.paso-seguimiento.completo .punto {
-  background: #8b4513;
-}
-
-.paso-seguimiento:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 55%;
-  width: 90%;
-  height: 2px;
-  background: #f0ddc4;
-  z-index: -1;
-}
-
-.paso-seguimiento.completo:not(:last-child)::after {
-  background: #8b4513;
 }
 
 
@@ -556,10 +296,6 @@ footer.page-footer .footer-copyright {
   color: #8d7a72;
 }
 
-.divider-suave {
-  border-top: 1px solid #f0ddc4;
-  margin: 30px 0;
-}
 
 .empty-state {
   text-align: center;
@@ -574,7 +310,50 @@ footer.page-footer .footer-copyright {
 }
 
 @media (max-width: 600px) {
-  .hero h1 { font-size: 2.2rem; }
   .form-card { padding: 28px 20px; }
-  .resumen-carrito { position: static; }
+}
+
+
+/* Alertas (componente Alert de react-bootstrap, sin cargar todo Bootstrap) */
+.alert {
+  position: relative;
+  padding: 14px 44px 14px 16px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.alert-primary { color: #5d4037; background: #fff2df; border-color: #f0ddc4; }
+.alert-danger  { color: #842029; background: #fdecec; border-color: #f5c2c7; }
+.alert-success { color: #2e5e2c; background: #eef7ee; border-color: #c8e2c7; }
+.alert-warning { color: #7a5a12; background: #fff6dc; border-color: #f3dfa2; }
+
+.alert .btn-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+}
+
+.alert .btn-close::before {
+  content: "×";
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.alert .btn-close:hover {
+  opacity: 1;
+}
+
+.fade {
+  transition: opacity 0.15s linear;
+}
+
+.fade:not(.show) {
+  opacity: 0;
 }

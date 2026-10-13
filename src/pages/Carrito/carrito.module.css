@@ -1,0 +1,174 @@
+.titulo {
+  font-size: 2.4rem;
+}
+
+.conItems {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Fila de cada producto */
+.filaCarrito {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid #f0ddc4;
+}
+
+.iconoMini {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: #fff5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconoMini i {
+  color: #8b4513;
+}
+
+.infoItem {
+  flex: 1;
+}
+
+.nombreItem {
+  font-weight: 700;
+  margin: 0;
+}
+
+.detalleItem {
+  margin: 2px 0;
+}
+
+.subtotalItem {
+  font-weight: 700;
+  width: 90px;
+  text-align: right;
+}
+
+/* Resumen del pedido */
+.resumenCarrito {
+  background: #fff;
+  border: 1px solid #f0ddc4;
+  border-radius: 14px;
+  padding: 26px;
+  position: sticky;
+  top: 90px;
+}
+
+.sinMargenArriba {
+  margin-top: 0;
+}
+
+.resumenLinea {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.resumenLinea.total {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #8b4513;
+  border-top: 1px solid #f0ddc4;
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.resumenLinea.descuento {
+  color: #4c8c4a;
+}
+
+.avisoSesion {
+  margin-top: 18px;
+}
+
+.botonCheckout {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.bloqueCheckout {
+  margin-top: 40px;
+}
+
+.subtitulo {
+  font-weight: 700;
+}
+
+/* Confirmación y boleta */
+.encabezadoConfirmacion {
+  margin-bottom: 20px;
+}
+
+i.iconoConfirmado {
+  font-size: 4rem;
+  color: #4c8c4a;
+}
+
+.tituloConfirmacion {
+  font-size: 2.2rem;
+}
+
+.dividerSuave {
+  border-top: 1px solid #f0ddc4;
+  margin: 30px 0;
+}
+
+.pasosSeguimiento {
+  display: flex;
+  justify-content: space-between;
+  margin: 26px 0 10px;
+}
+
+.pasoSeguimiento {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.punto {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f0ddc4;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.completo .punto {
+  background: #8b4513;
+}
+
+.pasoSeguimiento:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 55%;
+  width: 90%;
+  height: 2px;
+  background: #f0ddc4;
+  z-index: -1;
+}
+
+.pasoSeguimiento.completo:not(:last-child)::after {
+  background: #8b4513;
+}
+
+.margenArriba {
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .resumenCarrito { position: static; }
+}
