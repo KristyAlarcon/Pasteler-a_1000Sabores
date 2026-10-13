@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { Modal, Form, Button, Toast, ToastContainer } from "react-bootstrap";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "./catalogo.module.css";
@@ -170,28 +171,20 @@ function formatearPrecio(numero){
 function Catalogo(){
     const [carrito, setCarrito] = useState(JSON.parse(localStorage.getItem("carrito")) || []);
 
-    // Filtros
+
     const [categoriaElegida, setCategoriaElegida] = useState("");
     const [tipoElegido, setTipoElegido] = useState("");
     const [orden, setOrden] = useState("relevancia");
 
-    // Modal del producto
-    const modalRef = useRef(null);
+
+    const [mostrarModal, setMostrarModal] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
     const [cantidadSeleccionada, setCantidadSeleccionada] = useState(1);
     const [tamano, setTamano] = useState("mediana");
     const [mensaje, setMensaje] = useState("");
-    const [errorMensaje, setErrorMensaje] = useState("");
 
-    // Selects y modal con el estilo de Materialize
-    useEffect(() => {
-        const selects = window.M.FormSelect.init(document.querySelectorAll("select"));
-        const modal = window.M.Modal.init(modalRef.current);
-        return () => {
-            selects.forEach((select) => select.destroy());
-            modal.destroy();
-        };
-    }, []);
+
+    const [mensajeAviso, setMensajeAviso] = useState("");
 
     function obtenerProductosFiltrados(){
         let resultado = productos.filter(function (producto) {
@@ -221,9 +214,7 @@ function Catalogo(){
         setProductoSeleccionado(producto);
         setCantidadSeleccionada(1);
         setMensaje("");
-        setErrorMensaje("");
-
-        window.M.Modal.getInstance(modalRef.current).open();
+        setMostrarModal(true);
     }
 
     function restarCantidad(){
@@ -236,17 +227,10 @@ function Catalogo(){
         setCantidadSeleccionada(cantidadSeleccionada + 1);
     }
 
-    function agregarProductoAlCarrito(evento){
-        evento.preventDefault();
+    function agregarProductoAlCarrito(){
         if (!productoSeleccionado) return;
 
         const mensajeLimpio = mensaje.trim();
-
-        if (mensajeLimpio.length > 60) {
-            setErrorMensaje("El mensaje no puede tener más de 60 caracteres.");
-            return;
-        }
-
         const nuevoCarrito = carrito.map((item) => ({ ...item }));
 
         const itemExistente = nuevoCarrito.find(function (item) {
@@ -273,9 +257,8 @@ function Catalogo(){
         localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
         setCarrito(nuevoCarrito);
 
-        window.M.Modal.getInstance(modalRef.current).close();
-
-        window.M.toast({ html: productoSeleccionado.nombre + " se agregó al carrito." });
+        setMostrarModal(false);
+        setMensajeAviso(productoSeleccionado.nombre + " se agregó al carrito.");
     }
 
     const puedePersonalizarTamano = productoSeleccionado ? productoSeleccionado.tipo !== null : true;
@@ -290,44 +273,44 @@ function Catalogo(){
                     <p className="texto-secundario">Filtra por categoría, forma o tamaño.</p>
 
                     <div className={styles.filtrosPanel}>
-                        <div className={"row " + styles.fila}>
-                            <div className="input-field col s12 m4">
-                                <select id="filtro-categoria" value={categoriaElegida} onChange={(e) => setCategoriaElegida(e.target.value)}>
+                        <div className="row">
+                            <Form.Group className="col-12 col-md-4 mb-3" controlId="filtro-categoria">
+                                <Form.Label>Categoría</Form.Label>
+                                <Form.Select value={categoriaElegida} onChange={(e) => setCategoriaElegida(e.target.value)}>
                                     <option value="">Todas las categorías</option>
                                     {categorias.map((nombreCategoria) => (
                                         <option key={nombreCategoria} value={nombreCategoria}>{nombreCategoria}</option>
                                     ))}
-                                </select>
-                                <label>Categoría</label>
-                            </div>
-                            <div className="input-field col s12 m4">
-                                <select id="filtro-tipo" value={tipoElegido} onChange={(e) => setTipoElegido(e.target.value)}>
+                                </Form.Select>
+                            </Form.Group>
+                            <Form.Group className="col-12 col-md-4 mb-3" controlId="filtro-tipo">
+                                <Form.Label>Tipo de torta</Form.Label>
+                                <Form.Select value={tipoElegido} onChange={(e) => setTipoElegido(e.target.value)}>
                                     <option value="">Cualquier forma</option>
                                     <option value="cuadrada">Cuadrada</option>
                                     <option value="circular">Circular</option>
                                     <option value="individual">Individual</option>
-                                </select>
-                                <label>Tipo de torta</label>
-                            </div>
-                            <div className="input-field col s12 m4">
-                                <select id="filtro-orden" value={orden} onChange={(e) => setOrden(e.target.value)}>
+                                </Form.Select>
+                            </Form.Group>
+                            <Form.Group className="col-12 col-md-4 mb-3" controlId="filtro-orden">
+                                <Form.Label>Ordenar por</Form.Label>
+                                <Form.Select value={orden} onChange={(e) => setOrden(e.target.value)}>
                                     <option value="relevancia">Relevancia</option>
                                     <option value="menor-precio">Menor precio</option>
                                     <option value="mayor-precio">Mayor precio</option>
-                                </select>
-                                <label>Ordenar por</label>
-                            </div>
+                                </Form.Select>
+                            </Form.Group>
                         </div>
                     </div>
 
                     <p id="contador-resultados" className="texto-secundario">{listaProductos.length + " producto(s) encontrado(s)."}</p>
 
-                    <div className={"row " + styles.gridProductos} id="grid-productos">
+                    <div className="row g-4" id="grid-productos">
                         {listaProductos.map((producto) => (
-                            <div className="col s12 m6 l3" key={producto.codigo}>
-                                <div className={"card " + styles.productoCard} onClick={() => abrirModalProducto(producto)}>
+                            <div className="col-12 col-sm-6 col-lg-3" key={producto.codigo}>
+                                <div className={"card h-100 " + styles.productoCard} onClick={() => abrirModalProducto(producto)}>
                                     <div className={styles.productoMedia}><i className="material-icons">{producto.icono}</i></div>
-                                    <div className="card-content">
+                                    <div className="card-body d-flex flex-column">
                                         <span className={styles.chipCategoria}>{producto.categoria}</span>
                                         <p className={styles.productoNombre}>{producto.nombre}</p>
                                         <p className={styles.productoDesc}>{producto.descripcion}</p>
@@ -347,31 +330,32 @@ function Catalogo(){
             </section>
 
 
-            <div id="modal-producto" className="modal" ref={modalRef}>
-                <div className="modal-content">
-                    <h5 id="modal-nombre">{productoSeleccionado ? productoSeleccionado.nombre : "Producto"}</h5>
+            <Modal show={mostrarModal} onHide={() => setMostrarModal(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title as="h5" id="modal-nombre">{productoSeleccionado ? productoSeleccionado.nombre : "Producto"}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <p className="texto-secundario" id="modal-descripcion">{productoSeleccionado ? productoSeleccionado.descripcion : ""}</p>
                     <p className={styles.productoPrecio} id="modal-precio">{productoSeleccionado ? "$" + formatearPrecio(productoSeleccionado.precio) : ""}</p>
 
-                    <div className={"row " + styles.tamanoWrapper + (puedePersonalizarTamano ? "" : " " + styles.oculto)} id="modal-tamano-wrapper">
-                        <div className="input-field col s12">
-                            <select id="modal-tamano" value={tamano} onChange={(e) => setTamano(e.target.value)}>
+                    {puedePersonalizarTamano && (
+                        <Form.Group className="mb-3" controlId="modal-tamano">
+                            <Form.Label>Tamaño</Form.Label>
+                            <Form.Select value={tamano} onChange={(e) => setTamano(e.target.value)}>
                                 <option value="pequeña">Pequeña (hasta 10 personas)</option>
                                 <option value="mediana">Mediana (hasta 20 personas)</option>
                                 <option value="grande">Grande (hasta 35 personas)</option>
-                            </select>
-                            <label>Tamaño</label>
-                        </div>
-                    </div>
+                            </Form.Select>
+                        </Form.Group>
+                    )}
 
-                    <div className={(errorMensaje ? "input-field invalido " : "input-field ") + styles.mensajeWrapper} id="modal-mensaje-wrapper">
-                        <textarea id="modal-mensaje" className="materialize-textarea" maxLength={60}
+                    <Form.Group className="mb-3" controlId="modal-mensaje">
+                        <Form.Label>Mensaje especial para la torta (opcional)</Form.Label>
+                        <Form.Control as="textarea" rows={2} maxLength={60}
                             value={mensaje}
-                            onChange={(e) => setMensaje(e.target.value)}></textarea>
-                        <label htmlFor="modal-mensaje">Mensaje especial para la torta (opcional)</label>
-                        <span className="helper-text">Máximo 60 caracteres.</span>
-                        <div className={errorMensaje ? "mensaje-error activo" : "mensaje-error"}>{errorMensaje}</div>
-                    </div>
+                            onChange={(e) => setMensaje(e.target.value)} />
+                        <Form.Text className="texto-secundario">Máximo 60 caracteres.</Form.Text>
+                    </Form.Group>
 
                     <div className={styles.bloqueCantidad}>
                         <label>Cantidad</label>
@@ -381,12 +365,18 @@ function Catalogo(){
                             <button type="button" id="modal-mas" onClick={sumarCantidad}>+</button>
                         </div>
                     </div>
-                </div>
-                <div className="modal-footer">
-                    <a href="#!" className="btn-flat modal-close">Cancelar</a>
-                    <a href="#!" className="btn" id="modal-agregar" onClick={agregarProductoAlCarrito}>Agregar al carrito</a>
-                </div>
-            </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="link" className={styles.botonCancelar} onClick={() => setMostrarModal(false)}>Cancelar</Button>
+                    <Button id="modal-agregar" onClick={agregarProductoAlCarrito}>Agregar al carrito</Button>
+                </Modal.Footer>
+            </Modal>
+
+            <ToastContainer position="bottom-end" className="p-3" containerPosition="fixed">
+                <Toast show={mensajeAviso !== ""} onClose={() => setMensajeAviso("")} delay={3000} autohide>
+                    <Toast.Body>{mensajeAviso}</Toast.Body>
+                </Toast>
+            </ToastContainer>
 
             <Footer/>
         </>

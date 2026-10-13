@@ -1,0 +1,45 @@
+.barra {
+  background-color: #fffaf0;
+  box-shadow: 0 2px 6px rgba(93, 64, 55, 0.08);
+}
+
+.marca {
+  font-family: "Pacifico", cursive;
+  color: #8b4513 !important;
+  font-size: 1.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  height: 60px;
+}
+
+.enlace {
+  color: #5d4037 !important;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.enlace:hover,
+.enlace:global(.active) {
+  color: #8b4513 !important;
+}
+
+.iconoCarrito {
+  margin-right: 4px;
+  font-size: 1.3rem;
+}
+
+.badge {
+  background-color: #d9a441 !important;
+  margin-left: 4px;
+}
+
+.saludo {
+  color: #5d4037;
+  font-weight: 600;
+  padding: 0.5rem;
+}

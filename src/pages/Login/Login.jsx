@@ -61,7 +61,7 @@ function Login(){
 
             <section>
                 <div className="container">
-                    <div className={"center-align " + styles.encabezado}>
+                    <div className={"text-center " + styles.encabezado}>
                         <h1 className={styles.titulo}>Inicia sesión</h1>
                         <p className="texto-secundario">Accede a tu cuenta para ver tus beneficios y pedidos.</p>
                     </div>
@@ -72,7 +72,7 @@ function Login(){
                         textoBoton="Entrar"
                         onGuardar={iniciarSesion}
                         pie={
-                            <p className={"center-align " + styles.pie}>
+                            <p className={"text-center " + styles.pie}>
                                 ¿Aún no tienes cuenta? <Link to="/Registro">Regístrate aquí</Link>
                             </p>
                         }
