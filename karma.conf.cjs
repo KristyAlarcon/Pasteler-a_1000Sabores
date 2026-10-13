@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const fs = require('fs');
 const path = require('path');
 
@@ -12,6 +13,11 @@ if (!process.env.CHROME_BIN && process.platform === 'win32') {
     process.env.CHROME_BIN = edge;
   }
 }
+=======
+// Configuración de Karma: ejecuta las pruebas de Jasmine en un navegador real (Chrome).
+// Webpack + Babel transforman los archivos .jsx y los CSS Modules para el navegador.
+
+>>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
 module.exports = function (config) {
   config.set({
     // Jasmine es el framework de pruebas; webpack empaqueta los archivos de prueba
@@ -40,6 +46,10 @@ module.exports = function (config) {
                   '@babel/preset-env',
                   ['@babel/preset-react', { runtime: 'automatic' }],
                 ],
+<<<<<<< HEAD
+=======
+                // istanbul marca el código para medir la cobertura (sin contar los .spec)
+>>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
                 plugins: [['istanbul', { exclude: ['**/*.spec.jsx'] }]],
               },
             },
@@ -75,4 +85,8 @@ module.exports = function (config) {
     browsers: ['ChromeHeadless'],
     singleRun: false,
   });
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b

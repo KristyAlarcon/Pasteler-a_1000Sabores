@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
 import { render, screen, fireEvent } from '@testing-library/react';
 import Formulario from './formulario';
 
@@ -19,7 +22,11 @@ describe('Formulario', () => {
     expect(screen.getByText('Enviar')).toBeTruthy();
   });
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
   it('entrega los valores escritos a onGuardar al hacer clic en el botón', () => {
     const onGuardar = jasmine.createSpy('onGuardar');
     render(<Formulario campos={campos} textoBoton="Enviar" onGuardar={onGuardar} />);
@@ -32,7 +39,11 @@ describe('Formulario', () => {
     expect(onGuardar.calls.mostRecent().args[0]).toEqual({ nombre: 'Ana', email: 'ana@test.cl' });
   });
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
   it('muestra la alerta solo cuando la validación falla', () => {
     function validar(valores, alerta) {
       if (valores.nombre.trim().length == 0) {
@@ -49,4 +60,8 @@ describe('Formulario', () => {
 
     expect(screen.getByRole('alert').textContent).toContain('El nombre no debe de estar vacío.');
   });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
