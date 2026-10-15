@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import Admin from "./pages/Admin/Admin"
 import Carrito from "./pages/Carrito/Carrito"
 import Catalogo from "./pages/Catalogo/Catalogo"
 import Inicio from "./pages/Inicio/Inicio"
@@ -26,5 +27,9 @@ export const routes = createBrowserRouter([
     {
         path:'/Registro',
         element:<Registro/>
+    },
+    {
+        path:'/Admin',
+        element:<Admin/>
     }
 ])

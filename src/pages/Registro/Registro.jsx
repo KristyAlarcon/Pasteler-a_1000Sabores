@@ -61,6 +61,7 @@ function calcularBeneficios(datos){
 function Registro(){
     const navigate = useNavigate();
 
+    // Valores del formulario, usados para mostrar los avisos de beneficios
     const [datos, setDatos] = useState({});
     const beneficios = calcularBeneficios(datos);
     const mostrarAvisoTorta = beneficios.esEstudianteDuoc && Boolean(datos.fechaNacimiento);

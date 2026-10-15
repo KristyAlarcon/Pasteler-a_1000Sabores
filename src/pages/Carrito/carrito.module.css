@@ -7,7 +7,7 @@
   flex-wrap: wrap;
 }
 
-
+/* Fila de cada producto */
 .filaCarrito {
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@
   text-align: right;
 }
 
-
+/* Resumen del pedido */
 .resumenCarrito {
   background: #fff;
   border: 1px solid #f0ddc4;
@@ -101,7 +101,7 @@
   font-weight: 700;
 }
 
-
+/* Confirmación y boleta */
 .encabezadoConfirmacion {
   margin-bottom: 20px;
 }

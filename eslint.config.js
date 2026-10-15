@@ -18,11 +18,4 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
-  {
-    // Pruebas de Jasmine (describe, it, expect, jasmine...)
-    files: ['**/*.spec.jsx'],
-    languageOptions: {
-      globals: globals.jasmine,
-    },
-  },
 ])

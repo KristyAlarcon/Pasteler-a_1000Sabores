@@ -28,10 +28,11 @@ function Carrito(){
     const sesion = JSON.parse(localStorage.getItem("sesion"));
     const [carrito, setCarrito] = useState(JSON.parse(localStorage.getItem("carrito")) || []);
 
-
+    // Checkout
     const checkoutRef = useRef(null);
     const [mostrarCheckout, setMostrarCheckout] = useState(false);
 
+    // Boleta generada al confirmar el pedido
     const [boleta, setBoleta] = useState(null);
 
     useEffect(() => {
@@ -106,7 +107,8 @@ function Carrito(){
         }
 
         setBoleta({
-
+            // Se ejecuta al confirmar el pedido, no durante el render
+            // eslint-disable-next-line react-hooks/purity
             numeroPedido: Math.floor(Math.random() * 900000) + 100000,
             fecha: new Date().toLocaleDateString("es-CL"),
             fechaEntrega: new Date(valores.fecha).toLocaleDateString("es-CL"),

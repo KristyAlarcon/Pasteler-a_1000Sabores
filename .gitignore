@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# Reporte de cobertura de Karma
+# Reporte de cobertura de Vitest
 coverage

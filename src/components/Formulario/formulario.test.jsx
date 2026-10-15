@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
 import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import Formulario from './formulario';
 
-
+// Campos de ejemplo, igual que los que le pasan las páginas (Login, Registro, Carrito)
 const campos = [
   { id: 'nombre', label: 'Nombre' },
   { id: 'email', label: 'Correo electrónico', type: 'email' },
@@ -13,22 +10,19 @@ const campos = [
 
 describe('Formulario', () => {
 
-
+  // Prueba 1 (props y renderizado): dibuja un campo por cada elemento de "campos" y el botón con "textoBoton"
   it('muestra los campos y el botón que recibe por props', () => {
     render(<Formulario campos={campos} textoBoton="Enviar" onGuardar={() => {}} />);
 
-    expect(screen.getByLabelText('Nombre')).toBeTruthy();
-    expect(screen.getByLabelText('Correo electrónico')).toBeTruthy();
-    expect(screen.getByText('Enviar')).toBeTruthy();
+    expect(screen.getByLabelText('Nombre')).toBeInTheDocument();
+    expect(screen.getByLabelText('Correo electrónico')).toBeInTheDocument();
+    expect(screen.getByText('Enviar')).toBeInTheDocument();
   });
 
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
+  // Prueba 2 (estado, evento y mock): lo que se escribe queda en el estado
+  // y al hacer clic se entrega a onGuardar. onGuardar es un mock (vi.fn).
   it('entrega los valores escritos a onGuardar al hacer clic en el botón', () => {
-    const onGuardar = jasmine.createSpy('onGuardar');
+    const onGuardar = vi.fn();
     render(<Formulario campos={campos} textoBoton="Enviar" onGuardar={onGuardar} />);
 
     fireEvent.change(screen.getByLabelText('Nombre'), { target: { value: 'Ana' } });
@@ -36,14 +30,10 @@ describe('Formulario', () => {
     fireEvent.click(screen.getByText('Enviar'));
 
     expect(onGuardar).toHaveBeenCalledTimes(1);
-    expect(onGuardar.calls.mostRecent().args[0]).toEqual({ nombre: 'Ana', email: 'ana@test.cl' });
+    expect(onGuardar.mock.calls[0][0]).toEqual({ nombre: 'Ana', email: 'ana@test.cl' });
   });
 
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b
+  // Prueba 3 (renderizado condicional): la alerta solo aparece cuando la validación falla
   it('muestra la alerta solo cuando la validación falla', () => {
     function validar(valores, alerta) {
       if (valores.nombre.trim().length == 0) {
@@ -53,15 +43,11 @@ describe('Formulario', () => {
 
     render(<Formulario campos={campos} textoBoton="Enviar" onGuardar={validar} />);
 
-
-    expect(screen.queryByRole('alert')).toBeNull();
+    // Antes de enviar no hay ninguna alerta
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByText('Enviar'));
 
-    expect(screen.getByRole('alert').textContent).toContain('El nombre no debe de estar vacío.');
+    expect(screen.getByRole('alert')).toHaveTextContent('El nombre no debe de estar vacío.');
   });
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 98150b63559c62e74fc4a86962ffa6bbb1586d8b

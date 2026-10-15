@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./footer.module.css";
 
-
+// completo = true muestra las columnas de información (como en la página de inicio)
 function Footer({ completo = false }){
     const anioActual = new Date().getFullYear();
 

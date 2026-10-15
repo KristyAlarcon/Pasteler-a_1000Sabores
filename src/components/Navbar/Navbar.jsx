@@ -7,7 +7,7 @@ function Navbar(){
     const navigate = useNavigate();
     const [sesion, setSesion] = useState(JSON.parse(localStorage.getItem("sesion")));
 
-
+    // Total de productos guardados en el carrito
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let cantidadCarrito = 0;
     carrito.forEach(function (item) {
@@ -36,6 +36,7 @@ function Navbar(){
                         <Nav.Link as={NavLink} to="/" end className={styles.enlace}>Inicio</Nav.Link>
                         <Nav.Link as={NavLink} to="/Catalogo" className={styles.enlace}>Catálogo</Nav.Link>
                         <Nav.Link href="#" className={styles.enlace}>Comunidad</Nav.Link>
+                        <Nav.Link as={NavLink} to="/Admin" className={styles.enlace}>Administrar</Nav.Link>
                         <Nav.Link as={NavLink} to="/Carrito" className={styles.enlace}>
                             <i className={"material-icons " + styles.iconoCarrito}>shopping_cart</i>
                             Carrito <Badge pill className={styles.badge} id="carrito-badge">{cantidadCarrito}</Badge>

@@ -3,12 +3,14 @@ import { Form, Button } from "react-bootstrap";
 import App_alert from "../../alert/alert";
 import styles from "./formulario.module.css";
 
-function Formulario({ campos, titulo, textoBoton, className, onGuardar, onCambio, children, pie }){
-
+function Formulario({ campos, titulo, textoBoton, className, onGuardar, onCambio, valoresIniciales = {}, children, pie }){
+    // Valores de todos los campos: { idCampo: valor }
     const [valores, setValores] = useState(() => {
         const iniciales = {};
         campos.forEach((campo) => {
-            if (campo.type === "checkbox") iniciales[campo.id] = false;
+            // Si viene un valor inicial (por ejemplo, al editar), se usa ese
+            if (valoresIniciales[campo.id] !== undefined) iniciales[campo.id] = valoresIniciales[campo.id];
+            else if (campo.type === "checkbox") iniciales[campo.id] = false;
             else if (campo.type === "select") iniciales[campo.id] = campo.opciones[0].valor;
             else iniciales[campo.id] = "";
         });
@@ -35,7 +37,7 @@ function Formulario({ campos, titulo, textoBoton, className, onGuardar, onCambio
     function guardar(evento){
         evento.preventDefault();
         setMostrarAlerta(false);
-   
+        // La página valida los valores y usa alerta() para mostrar el mensaje
         onGuardar(valores, alerta);
     }
 
